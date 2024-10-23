@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:10:42 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/21 17:10:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/23 12:13:06 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "pipex.h"
-
-
 //# include <string.h>
 //# include <sys/wait.h>
-
 
 void	child(char **argv, char **envp, int *pipefd)
 {
 	int	fd_in;
 
-	fd_in  = open(argv[1], O_RDONLY);
+	fd_in = open(argv[1], O_RDONLY);
 	if (fd_in == -1)
 		exit(-1);
 	dup2(pipefd[1], STDOUT_FILENO); // não faz sentido
@@ -46,9 +44,9 @@ int main(int argc, char **argv, char **envp)
 {
 	pid_t	pid;
 	int		pipefd[2];
-	/*
-	if (argc != 5) 
-	    return (0);
+
+	if (argc != 5)
+		return (0);
 	if (pipe(pipefd) == -1)
 		exit(-1);
 	pid = fork();
@@ -56,9 +54,8 @@ int main(int argc, char **argv, char **envp)
 		exit(-1);
 	if (pid == 0)
 		child(argv, envp, pipefd);
-	parent(argv, envp, pipefd);*/
-	
-	int i=-1;
-	while (envp[++i])
-		printf("%s\n", envp[i]);
+	parent(argv, envp, pipefd);
+	// int i=-1;
+	// while (envp[++i])
+	// 	printf("%s\n", envp[i]);
 }

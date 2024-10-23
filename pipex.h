@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:44 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/21 17:11:44 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/23 11:54:18 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <unistd.h> //fork(), pipe(),
 # include <stdio.h> // STOUT_FILENO
 
-void	execute(char *cmd, char **envp);
+void	execute(char *argv, char **envp);
 
 #endif
