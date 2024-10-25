@@ -3,39 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+         #
+#    By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/23 12:00:29 by fvargas           #+#    #+#              #
-#    Updated: 2024/10/23 12:17:46 by fvargas          ###   ########.fr        #
+#    Created: 2024/10/24 21:22:26 by fefa              #+#    #+#              #
+#    Updated: 2024/10/24 21:23:44 by fefa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LIBFT = libft/libft.a
-DEBUG_FLAGS = -g
-SRC = pipex.c util.c
-INC = pipex.h
+NAME =			pipex
+CC =			cc
+CFLAGS =		-Wall -Wextra -Werror -g
+LIBFT =			libft/libft.a
+HDRS :=			pipex.h
+SRCS = 			pipex.c util.c
 
-OBS = $(SRC: .c = .o)
+OBJS = 			$(SRCS:.c=.o)
 
-all: $(NAME)
+RM = rm -rf
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+${NAME}:$(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-debug: $(OBJS)
-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(OBJS) -o $(NAME)
+all: ${NAME}
 
 clean:
-	rm -f $(OBJS)
+	${RM} ${OBJS}
+	make clean -C ./libft
 
-fclean: clean
-			rm -rf $(NAME)
+fclean:	clean
+		${RM} ${NAME}	
 
 re: fclean all
 
-$(OBJS) : $(INC)
-
-
+$(OBJS): $(HDRS)

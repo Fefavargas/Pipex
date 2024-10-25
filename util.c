@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 07:31:15 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/23 11:55:16 by fvargas          ###   ########.fr       */
+/*   Updated: 2024/10/24 20:59:00 by fefa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_path(char *cmd, char **envp)
 	i = 0;
 	while (ft_strncmp(envp[i], "PATH", 4))
 		i++;
-	paths = ft_split(envp[i + 5], ':');
+	paths = ft_split(envp[i] + 5, ':');
 	i = 0;
 	while (paths[i])
 	{
@@ -60,12 +60,11 @@ void	execute(char *argv, char **envp)
 	path = get_path(cmd[0], envp);
 	if (!path)
 	{
+		ft_putstr_fd("Command not found1: ", 2);
+		ft_putstr_fd(cmd[0], 2);
 		free_array(cmd);
-		ft_putstr_fd("Command not found", 2);
-		return ;
+		exit (-1);
 	}
 	if (execve(path, cmd, envp) == -1)
-		ft_putstr_fd("Command not found", 2);
-	free(path);
-	free_array(cmd);
+		ft_putstr_fd("Command not found2", 2);
 }
