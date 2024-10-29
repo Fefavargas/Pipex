@@ -6,7 +6,7 @@
 /*   By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:44 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/24 20:44:29 by fefa             ###   ########.fr       */
+/*   Updated: 2024/10/29 10:57:36 by fefa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 # include <sys/wait.h> //waitpid
 
 void	execute(char *argv, char **envp);
+void	error(char *msg);
 
 #endif
