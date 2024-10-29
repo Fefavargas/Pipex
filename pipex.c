@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:10:42 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/29 11:00:42 by fefa             ###   ########.fr       */
+/*   Updated: 2024/10/29 18:22:01 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		ft_putstr_fd("\033[31mError: Bad arguments\n", 2);
 		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 1);
-		return (0);
+		exit(SIGQUIT);
 	}
 	if (pipe(pipefd) == -1)
 		error("");

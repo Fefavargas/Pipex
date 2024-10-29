@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:44 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/29 10:57:36 by fefa             ###   ########.fr       */
+/*   Updated: 2024/10/29 18:20:29 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h> //fork(), pipe(),
 # include <stdio.h> // STOUT_FILENO
 # include <sys/wait.h> //waitpid
+# include <signal.h> //SIGQUIT
 
 void	execute(char *argv, char **envp);
 void	error(char *msg);
