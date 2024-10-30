@@ -6,7 +6,7 @@
 /*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:10:42 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/29 18:22:01 by fvargas          ###   ########.fr       */
+/*   Updated: 2024/10/30 15:51:55 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	child(char **argv, char **envp, int *pipefd)
 		error(argv[1]);
 	dup2(fd_in, STDIN_FILENO);
 	dup2(pipefd[1], STDOUT_FILENO);
+	close(fd_in);
 	close(pipefd[0]);
+	close(pipefd[1]);
 	execute(argv[2], envp);
 }
 
@@ -34,6 +36,8 @@ void	parent(char **argv, char **envp, int *pipefd)
 		error(argv[4]);
 	dup2(pipefd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
+	close(fd_out);
+	close(pipefd[0]);
 	close(pipefd[1]);
 	execute(argv[3], envp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fefa <fefa@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fvargas <fvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 07:31:15 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/29 10:57:45 by fefa             ###   ########.fr       */
+/*   Updated: 2024/10/30 19:22:17 by fvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,9 @@ void	execute(char *argv, char **envp)
 		exit(127);
 	}
 	else if (execve(path, cmd, envp) == -1)
+	{
+		free_array(cmd);
+		free(path);
 		error("");
+	}
 }
